@@ -77,7 +77,7 @@ apt-get -f install -y
 dpkg -i --force-depends ~/google-chrome-stable_current_amd64.deb
 
 echo "[*] Install Lazy Recon Script [*]"
-curl -o lazyrecon.sh https://https://raw.githubusercontent.com/nahamsec/lazyrecon/master/lazyrecon.sh
+curl -o lazyrecon.sh https://raw.githubusercontent.com/nahamsec/lazyrecon/master/lazyrecon.sh
 dos2unix lazyrecon.sh
 chmod +x ./lazyrecon
 echo "[+++] Dont forget to go into Total recon to install all Apps [+++]"
