@@ -66,10 +66,6 @@ echo "[++++] deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian 
 echo "[*] Install Kali Virtual box torrent [*]"
 transmission-cli https://images.offensive-security.com/virtual-images/kali-linux-2019.4-vbox-amd64.ova.torrent -w ~/Downloads
 
-echo "[*] Total Recon [*]"
-git clone https://github.com/vitalysim/totalrecon.git
-echo "[+++] Dont forget to go into Total recon to install all Apps [+++]"
-
 echo "[*] Install Chrome.[*]"
 wget -N https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -P ~/
 dpkg -i --force-depends ~/google-chrome-stable_current_amd64.deb
@@ -80,10 +76,36 @@ echo "[*] Install Lazy Recon Script [*]"
 curl -o lazyrecon.sh https://raw.githubusercontent.com/nahamsec/lazyrecon/master/lazyrecon.sh
 dos2unix lazyrecon.sh
 chmod +x ./lazyrecon
-echo "[+++] Dont forget to go into Total recon to install all Apps [+++]"
-echo "[*]Finished Installing....[*]"
-echo "[*] TotalRecon will have to done manually from here [*]"
-git clone https://github.com/vitalysim/totalrecon.git
-cd totalrecon/
-chmod +x ./total_recon.sh 
-echo 0 | ./total_recon.sh 
+
+echo "[*] nstalling Amass [*]"
+export GO111MODULE=on
+go get -v -u github.com/OWASP/Amass/v3/...
+cp $GOPATH/bin/amass /usr/local/bin
+
+
+echo "[*] Installing Subjack [*] "
+go get github.com/haccer/subjack
+cp $GOPATH/bin/subjack /usr/local/bin
+echo "[*] Finished installing Subjack [*] "
+
+echo "[*] Installing Nmap [*] "
+apt-get install -y nmap
+echo "[*] Finished installing Nmap [*] "
+
+echo "[+] Installing Waybackurls [+] "
+go get github.com/tomnomnom/waybackurls
+cp $GOPATH/bin/waybackurls /usr/local/bin
+echo "[+] Finished installing Waybackurls [+]"
+
+echo "[+] Installing EyeWitness [+] "
+git clone https://github.com/FortyNorthSecurity/EyeWitness.git $HOME/tools/eyewitness
+cd $HOME/tools/eyewitness/setup && ./setup.sh
+
+echo "[+] Installing httprobe [+] "
+go get -u github.com/tomnomnom/httprobe
+cp $GOPATH/bin/httprobe /usr/local/bin
+echo "[+] Finished installing httprobe [+] "
+
+
+
+echo "[*]Finished Installing All Apps[*]"
