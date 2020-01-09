@@ -6,7 +6,7 @@ After downloading run commands:
  2. chmod +x ./Maven_Debian_setup.sh
  3. ./Maven_Debian_setup.sh
  
-Maven_Debian_setup.sh = make sure to look for 'mike' and change to your username. still a work in progress. adding some more programs and dependencies to complete the setup. Its not a pretty script but it completes its purpose. This script does autoclean and is only intended for after a fresh installation of Debian buster.
+Maven_Debian_setup.sh = make sure to look for 'mike' and change to your username. Still a work in progress. Adding some more programs and dependencies to complete the setup. Its not a pretty script but it completes its purpose. This script does autoclean and is only intended for after a fresh installation of Debian buster.
 
 After script runs add virtualbox.list to /etc/apt/sources.list.d 
                       "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian buster contrib"
