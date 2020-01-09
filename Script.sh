@@ -1,5 +1,15 @@
     #!/bin/bash	
+    
+    logo(){
+  #against the law to have a batch script without a cool logo :D
+  echo "${red}
+      ||\\  //||   //\\  \\    // ||''' ||\\  || 
+      || \\// ||  //==\\  \\  //  ||==  || \\ ||
+      ||      || //    \\  \\//   ||,,, ||  \\||             
+${reset}                                     "
+}
     url=$1
+    logo
     if [ ! -d "$url" ];then
     	mkdir $url
     fi
@@ -107,4 +117,4 @@
 
     echo "[+] Running eyewitness against all compiled domains..."
     eyewitness --web -f ~/$url/recon/httprobe/alive.txt -d ~/$url/recon/eyewitness
-
+ 
