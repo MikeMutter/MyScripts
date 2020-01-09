@@ -1,15 +1,18 @@
 # MyScripts and a few .txt files
-Some Bash Scripts that I created. - I will add as I go - 
+Some Bash Scripts that I created. - I will add as I go and learn - 
 
 After downloading run commands:
- 1. dos2unix Maven_Debian_setup.sh
- 2. chmod +x ./Maven_Debian_setup.sh
- 3. ./Maven_Debian_setup.sh
+*********************************
+chmod +x ./Maven_Debian_setup.sh
+*********************************
+  ./Maven_Debian_setup.sh
+*********************************  
  
-Maven_Debian_setup.sh = make sure to look for 'mike' and change to your username. Still a work in progress. Adding some more programs and dependencies to complete the setup. Its not a pretty script but it completes its purpose. This script does autoclean and is only intended for after a fresh installation of Debian buster.
+Maven_Debian_setup.sh - Designed to be ran after installing Debian 'Buster' for the first time. script is catogorized to be modified to fit individual needs easily. Still a work in progress as I add more and clean it up. Adding and updating more programs and dependencies to complete the setup. 
 
-After script runs add virtualbox.list to /etc/apt/sources.list.d 
-                      "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian buster contrib"
+******Warning***********************************************************************************
+This script does autoclean and is only intended for after a fresh installation of Debian buster.
+************************************************************************************************
 
 This scripts installs the following:
 -ufw = Firewall and configures it
@@ -34,4 +37,8 @@ This scripts installs the following:
 -NMAP
 -HTTPROBE
 -Amass
--
+-Meg
+-Inscope
+-LinkFinder
+-fuff
+
