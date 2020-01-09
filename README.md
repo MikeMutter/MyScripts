@@ -8,7 +8,7 @@ chmod +x ./Maven_Debian_setup.sh
   ./Maven_Debian_setup.sh
 *********************************  
  
-Maven_Debian_setup.sh - Designed to be ran after installing Debian 'Buster' for the first time. script is catogorized to be modified to fit individual needs easily. Still a work in progress as I add more and clean it up. Adding and updating more programs and dependencies to complete the setup. 
+Maven_Debian_setup.sh - Designed to be ran after installing Debian 'Buster' for the first time. Script is catogorized so it can be modified as needed to fit individual needs easier. Still a work in progress as I add more and clean it up. Adding and updating more programs and dependencies to complete the setup. 
 
 ******Warning***********************************************************************************
 This script does autoclean and is only intended for after a fresh installation of Debian buster.
