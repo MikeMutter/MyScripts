@@ -1,4 +1,4 @@
-# MyScripts
+# MyScripts and a few .txt files
 Some Bash Scripts that I created. - I will add as I go - 
 
 After downloading run commands:
