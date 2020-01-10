@@ -123,9 +123,12 @@ source ~/.bash_profile
 cd ~/tools/
 echo "done"
 
+echo "[*] Install Lazy Recon Script pre-reqs [*]"
+curl -o install.sh https://raw.githubusercontent.com/nahamsec/bbht/master/install.sh
+chmod +x ./lazyrecon
+
 echo "[*] Install Lazy Recon Script [*]"
 curl -o lazyrecon.sh https://raw.githubusercontent.com/nahamsec/lazyrecon/master/lazyrecon.sh
-dos2unix lazyrecon.sh
 chmod +x ./lazyrecon
 
 echo "[====] Install Burp Suite [====]"
