@@ -46,6 +46,8 @@ apt-get install -y python-dnspython
 apt-get install -y git
 apt-get install -y rename
 apt-get install -y xargs
+apt install -y default-jre
+apt install -y default-jdk
 pip3 install -y jsbeautifier
 
 
@@ -221,6 +223,12 @@ echo "[+] Finished installing inscope [+]"
 echo "[+] Installing MassDNS [+]"
 git clone https://github.com/blechschmidt/massdns.git $HOME/tools/massdns
 cd $HOME/tools/massdns && make && cp $HOME/tools/massdns/bin/massdns /usr/local/bin
+CD $HOME
 echo "[+] Finished installing MassDNS [+]"
+
+echo "[+] Installing OWASP ZAP [+]"
+wget https://github.com/zaproxy/zaproxy/releases/download/v2.9.0/ZAP_2_9_0_unix.sh
+chmod +x ./ZAP_2_9_0_unix.sh
+echo "[+] Finished installing OWASP ZAP [+]"
     
 echo "[*]Finished Installing All Apps[*]"
