@@ -46,8 +46,6 @@ apt-get install -y python-dnspython
 apt-get install -y git
 apt-get install -y rename
 apt-get install -y xargs
-apt install -y default-jre
-apt install -y default-jdk
 pip3 install -y jsbeautifier
 
 
@@ -226,9 +224,9 @@ cd $HOME/tools/massdns && make && cp $HOME/tools/massdns/bin/massdns /usr/local/
 CD $HOME
 echo "[+] Finished installing MassDNS [+]"
 
-echo "[+] Installing OWASP ZAP [+]"
-wget https://github.com/zaproxy/zaproxy/releases/download/v2.9.0/ZAP_2_9_0_unix.sh
-chmod +x ./ZAP_2_9_0_unix.sh
+echo "[+] Installing and starting OWASP ZAP [+]"
+wget https://github.com/zaproxy/zaproxy/releases/download/w2020-01-27/ZAP_WEEKLY_D-2020-01-27.zip
+unzip ZAP_WEEKLY_D-2020-01-27.zip
 echo "[+] Finished installing OWASP ZAP [+]"
     
 echo "[*]Finished Installing All Apps[*]"
