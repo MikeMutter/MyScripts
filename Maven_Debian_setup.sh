@@ -48,7 +48,14 @@ apt-get install -y rename
 apt-get install -y xargs
 pip3 install -y jsbeautifier
 
+##Antivirus and IDS##
+echo "[*] Install ClamAV [*]"
+apt get install clamav -y 
+apt get install snort -y
+echo "[*] Finished installing ClamAV [*]"
+#############################
 
+##################
 echo "[*] Install GoLang [*]"
 wget https://storage.googleapis.com/golang/go1.13.5.linux-amd64.tar.gz
 tar -xvg go1.13.5.linux-amd64.tar.gz
@@ -110,6 +117,9 @@ apt-get -f install -y
 dpkg -i --force-depends ~/google-chrome-stable_current_amd64.deb
 
 echo " [-------------------] Bug Bounty Programs & Scipts [-------------------]"
+#create a tools folder in ~/
+mkdir ~/scripts
+cd ~/scripts/
 
 #create a tools folder in ~/
 mkdir ~/tools
