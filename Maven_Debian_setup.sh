@@ -119,29 +119,29 @@ dpkg -i --force-depends ~/google-chrome-stable_current_amd64.deb
 echo " [-------------------] Bug Bounty Programs & Scipts [-------------------]"
 #create a tools folder in ~/
 mkdir ~/scripts
-cd ~/scripts/
-
-#create a tools folder in ~/
-mkdir ~/tools
-cd ~/tools/
 
 echo "installing bash_profile aliases from recon_profile"
 git clone https://github.com/nahamsec/recon_profile.git
 cd recon_profile
 cat bash_profile >> ~/.bash_profile
 source ~/.bash_profile
-cd ~/tools/
 echo "done"
 
 echo "[*] Install Lazy Recon Script pre-reqs [*]"
+cd ~/scripts/
 curl -o install.sh https://raw.githubusercontent.com/nahamsec/bbht/master/install.sh
 chmod +x ./lazyrecon
+
+echo "[+] Installing inscope [+] "
+go get -u github.com/tomnomnom/hacks/inscope
+echo "[+] Finished installing inscope [+]"
 
 echo "[*] Install Lazy Recon Script [*]"
 curl -o lazyrecon.sh https://raw.githubusercontent.com/nahamsec/lazyrecon/master/lazyrecon.sh
 chmod +x ./lazyrecon
 
 echo "[====] Install Burp Suite [====]"
+cd ~
 wget https://portswigger.net/burp/releases/download?product=community&version=2.1.07&type=linux&componentid=100
 
 echo "[*] Installing Fast web fuzzer (ffuf) [*]"
@@ -154,12 +154,12 @@ go get -v -u github.com/OWASP/Amass/v3/...
 cp $HOME/go/bin/amass /usr/local/bin
 
 echo "[+] Installing sublist3r [+]"
-git clone https://github.com/aboul3la/Sublist3r.git $HOME/tools/sublist3r
-pip3 install --no-cache-dir --install-option="--prefix=/install" -r $HOME/tools/sublist3r/requirements.txt
-PATH_EXPORT=$PATH:$HOME/tools/sublist3r
+git clone https://github.com/aboul3la/Sublist3r.git $HOME/sublist3r
+pip3 install --no-cache-dir --install-option="--prefix=/install" -r $HOME/sublist3r/requirements.txt
+PATH_EXPORT=$PATH:$HOME/sublist3r
 echo $PATH_EXPORT
 echo "export PATH=${PATH_EXPORT}" >> $HOME/.bash_profile && source $HOME/.bash_profile
-ln -sf $HOME/tools/sublist3r/sublist3r.py $HOME/tools/sublist3r/sublist3r && chmod +x $HOME/tools/sublist3r/sublist3r
+ln -sf $HOME/sublist3r/sublist3r.py $HOME/sublist3r/sublist3r && chmod +x $HOME/sublist3r/sublist3r
 echo "[+] Finished installing sublist3r [+]"
     
 echo "[*] Installing Subjack [*] "
@@ -172,9 +172,9 @@ apt-get install -y nmap
 echo "[*] Finished installing Nmap [*] "
 
 echo "[+] Installing masscan [+]"
-git clone https://github.com/robertdavidgraham/masscan $HOME/tools/masscan
-cd $HOME/tools/masscan && make -j && cp $HOME/tools/masscan/bin/masscan /usr/local/bin
-rm -r $HOME/tools/masscan
+git clone https://github.com/robertdavidgraham/masscan $HOME/masscan
+cd $HOME/masscan && make -j && cp $HOME/masscan/bin/masscan /usr/local/bin
+rm -r $HOME/masscan
 cd $HOME
 echo "[+] Finished Installing  masscan [+]"
 
@@ -184,8 +184,8 @@ cp $HOME/go/bin/waybackurls /usr/local/bin
 echo "[+] Finished installing Waybackurls [+]"
 
 echo "[+] Installing EyeWitness [+] "
-git clone https://github.com/FortyNorthSecurity/EyeWitness.git $HOME/tools/eyewitness
-cd $HOME/tools/eyewitness/setup && ./setup.sh
+git clone https://github.com/FortyNorthSecurity/EyeWitness.git $HOME/eyewitness
+cd $HOME/eyewitness/setup && ./setup.sh
 cd $HOME
 
 echo "[+] Installing httprobe [+] "
@@ -200,37 +200,33 @@ echo "[+] Finished installing Meg [+]"
 
 echo "[+] Installing Dirsearch [+] "
 git clone https://github.com/maurosoria/dirsearch.git
-PATH_EXPORT=$PATH:$HOME/tools/dirsearch
+PATH_EXPORT=$PATH:$HOME/dirsearch
 echo $PATH_EXPORT
 echo "export PATH=${PATH_EXPORT}" >> $HOME/.bash_profile && source $HOME/.bash_profile
-ln -sf $HOME/tools/dirsearch/dirsearch.py $HOME/tools/dirsearch/dirsearch && chmod +x $HOME/tools/dirsearch/dirsearch
+ln -sf $HOME/dirsearch/dirsearch.py $HOME/dirsearch/dirsearch && chmod +x $HOME/dirsearch/dirsearch
 echo "[+] Finished installing Dirsearch [+] "
 
 echo "[*] Installing aquatone [*]"
-wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip -O $HOME/tools/aquatone.zip
-cd $HOME/tools && unzip aquatone.zip -d $HOME/tools/aquatone && cp $HOME/tools/aquatone/aquatone /usr/local/bin
-rm -r $HOME/tools/aquatone && rm $HOME/tools/aquatone.zip
+wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip -O $HOME/aquatone.zip
+cd $HOME && unzip aquatone.zip -d $HOME/aquatone && cp $HOME/aquatone/aquatone /usr/local/bin
+rm -r $HOME/aquatone && rm $HOME/aquatone.zip
 cd $HOME
 echo "[+] Finished installing aquatone [+]"
 
 echo "[+] Installing LinkFinder [+] "
 git clone https://github.com/GerbenJavado/LinkFinder.git
-PATH_EXPORT=$PATH:$HOME/tools/LinkFinder
+PATH_EXPORT=$PATH:$HOME/LinkFinder
 echo $PATH_EXPORT
 echo "export PATH=${PATH_EXPORT}" >> $HOME/.bash_profile && source $HOME/.bash_profile
-ln -sf $HOME/tools/LinkFinder/linkfinder.py $HOME/tools/LinkFinder/linkfinder && chmod +x $HOME/tools/LinkFinder/linkfinder
+ln -sf $HOME/LinkFinder/linkfinder.py $HOME/LinkFinder/linkfinder && chmod +x $HOME/LinkFinder/linkfinder
 cd LinkFinder
 python setup.py install
 cd $HOME
 echo "[+] Finished installing LinkFinder [+]"
 
-echo "[+] Installing inscope [+] "
-go get -u github.com/tomnomnom/hacks/inscope
-echo "[+] Finished installing inscope [+]" 
- 
 echo "[+] Installing MassDNS [+]"
-git clone https://github.com/blechschmidt/massdns.git $HOME/tools/massdns
-cd $HOME/tools/massdns && make && cp $HOME/tools/massdns/bin/massdns /usr/local/bin
+git clone https://github.com/blechschmidt/massdns.git $HOME/massdns
+cd $HOME/massdns && make && cp $HOME/massdns/bin/massdns /usr/local/bin
 CD $HOME
 echo "[+] Finished installing MassDNS [+]"
 
