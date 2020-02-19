@@ -1,5 +1,5 @@
 # MyScripts and a few .txt files
-Some Bash Scripts that I created. - I will add as I go and learn - 
+Some Bash Scripts that I created or found that were useful. - I will add as I go and learn - 
 
 After downloading run commands:
 *********************************
