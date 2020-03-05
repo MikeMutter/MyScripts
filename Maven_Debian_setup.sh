@@ -120,17 +120,30 @@ echo " [-------------------] Bug Bounty Programs & Scipts [-------------------]"
 #create a tools folder in ~/
 mkdir ~/scripts
 
+echo "installing impacket"
+curl -o https://raw.githubusercontent.com/leonteale/pentestpackage/master/Gpprefdecrypt.py
+echo "done"
+
+echo "[*] Install Gpprefdecrypt.py [*]"
+cd scripts
+curl -o lazyrecon.sh https://raw.githubusercontent.com/nahamsec/lazyrecon/master/lazyrecon.sh
+chmod +x ./lazyrecon
+cd ~
+
 echo "installing bash_profile aliases from recon_profile"
 git clone https://github.com/nahamsec/recon_profile.git
 cd recon_profile
 cat bash_profile >> ~/.bash_profile
 source ~/.bash_profile
+cd ~
 echo "done"
 
 echo "[*] Install Lazy Recon Script pre-reqs [*]"
 cd ~/scripts/
 curl -o install.sh https://raw.githubusercontent.com/nahamsec/bbht/master/install.sh
 chmod +x ./lazyrecon
+cd ~
+echo "done"
 
 echo "[+] Installing inscope [+] "
 go get -u github.com/tomnomnom/hacks/inscope
