@@ -34,8 +34,6 @@ apt-get -y rar
 apt-get -y install transmission-cli
 apt-get install -y libcurl4-openssl-dev
 apt-get install -y libssl-dev
-apt-get install -y jq
-apt-get install -y ruby-full
 apt-get install -y libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev build-essential libgmp-dev zlib1g-dev
 apt-get install -y build-essential libssl-dev libffi-dev python-dev
 apt-get install -y python-setuptools
@@ -66,16 +64,15 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 echo "export GOROOT=/usr/local/go" >> ~/.bash_profile 
 echo "export GOPATH=$HOME/go" >> ~/.bash_profile 
 echo "export PATH=$GOROOT/bin:$GOPATH/bin:$PATH" >> ~/.bash_profile && source ~/.bash_profile
-
 apt install sudo -y
-####Custom to me or my Laptop########
+
+####Custom to my Laptop########
 usermod -aG sudo  mike
 apt-get -y install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
 apt-get -y install firmware-linux-nonfree
 apt install firmware-linux-nonfree intel-microcode -y
 apt install firmware-linux firmware-linux-nonfree libdrm-amdgpu1 xserver-xorg-video-amdgpu -y
 apt-get -y install gdebi gksu firmware-linux
-apt-get -y install broadcom-sta-dkms 
 
 echo "[++++] Install IP Vanish [++++]"
 cd Downloads/
@@ -98,68 +95,16 @@ apt install flameshot -y
 echo "[*] Gedit [*]"
 apt-get -y install gedit
 
-echo "[*] Install VirtualBox [*]"
-wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | apt-key add -
-add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian buster contrib" 
-apt-get -y install virtualbox-6.1
-apt-get -y install virtualbox-ext-pack
-dpkg -i virtualbox-6.1
-echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian buster contrib" >> $HOME/etc/apt/sources.list.d
-
-echo "[*] Install Kali Virtual box torrent [*]"
-transmission-cli https://images.offensive-security.com/virtual-images/kali-linux-2019.4-vbox-amd64.ova.torrent -w ~/Downloads
-
 echo "[*] Install Chrome.[*]"
 wget -N https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -P ~/
 dpkg -i --force-depends ~/google-chrome-stable_current_amd64.deb
 apt-get -f install -y
 dpkg -i --force-depends ~/google-chrome-stable_current_amd64.deb
 
-echo " [-------------------] Bug Bounty Programs & Scipts [-------------------]"
-#create a tools folder in ~/
-mkdir ~/scripts
-
-echo "installing impacket"
-curl -o https://raw.githubusercontent.com/leonteale/pentestpackage/master/Gpprefdecrypt.py
-echo "done"
-
-echo "[*] Install Gpprefdecrypt.py [*]"
-cd scripts
-curl -o lazyrecon.sh https://raw.githubusercontent.com/nahamsec/lazyrecon/master/lazyrecon.sh
-chmod +x ./lazyrecon
-cd ~
-
-echo "installing bash_profile aliases from recon_profile"
-git clone https://github.com/nahamsec/recon_profile.git
-cd recon_profile
-cat bash_profile >> ~/.bash_profile
-source ~/.bash_profile
-cd ~
-echo "done"
-
-echo "[*] Install Lazy Recon Script pre-reqs [*]"
-cd ~/scripts/
-curl -o install.sh https://raw.githubusercontent.com/nahamsec/bbht/master/install.sh
-chmod +x ./lazyrecon
-cd ~
-echo "done"
-
-echo "[+] Installing inscope [+] "
-go get -u github.com/tomnomnom/hacks/inscope
-echo "[+] Finished installing inscope [+]"
-
-echo "[*] Install Lazy Recon Script [*]"
-curl -o lazyrecon.sh https://raw.githubusercontent.com/nahamsec/lazyrecon/master/lazyrecon.sh
-chmod +x ./lazyrecon
 
 echo "[====] Install Burp Suite [====]"
 cd ~
 wget https://portswigger.net/burp/releases/download?product=community&version=2.1.07&type=linux&componentid=100
-
-echo "[*] Installing Fast web fuzzer (ffuf) [*]"
-go get -u github.com/ffuf/ffuf
-cp $HOME/go/bin/ffuf /usr/local/bin
     
 echo "[*] Installing Amass [*]"
 export GO111MODULE=on
@@ -174,42 +119,10 @@ echo $PATH_EXPORT
 echo "export PATH=${PATH_EXPORT}" >> $HOME/.bash_profile && source $HOME/.bash_profile
 ln -sf $HOME/sublist3r/sublist3r.py $HOME/sublist3r/sublist3r && chmod +x $HOME/sublist3r/sublist3r
 echo "[+] Finished installing sublist3r [+]"
-    
-echo "[*] Installing Subjack [*] "
-go get github.com/haccer/subjack
-cp $HOME/go/bin/subjack /usr/local/bin
-echo "[*] Finished installing Subjack [*] "
 
 echo "[*] Installing Nmap [*] "
 apt-get install -y nmap
 echo "[*] Finished installing Nmap [*] "
-
-echo "[+] Installing masscan [+]"
-git clone https://github.com/robertdavidgraham/masscan $HOME/masscan
-cd $HOME/masscan && make -j && cp $HOME/masscan/bin/masscan /usr/local/bin
-rm -r $HOME/masscan
-cd $HOME
-echo "[+] Finished Installing  masscan [+]"
-
-echo "[+] Installing Waybackurls [+] "
-go get github.com/tomnomnom/waybackurls
-cp $HOME/go/bin/waybackurls /usr/local/bin
-echo "[+] Finished installing Waybackurls [+]"
-
-echo "[+] Installing EyeWitness [+] "
-git clone https://github.com/FortyNorthSecurity/EyeWitness.git $HOME/eyewitness
-cd $HOME/eyewitness/setup && ./setup.sh
-cd $HOME
-
-echo "[+] Installing httprobe [+] "
-go get -u github.com/tomnomnom/httprobe
-cp $HOME/go/bin/httprobe /usr/local/bin
-echo "[+] Finished installing httprobe [+] "
-
-echo "[+] Installing Meg [+] "
-go get github.com/tomnomnom/meg
-cp $HOME/go/bin/meg /usr/local/bin
-echo "[+] Finished installing Meg [+]"
 
 echo "[+] Installing Dirsearch [+] "
 git clone https://github.com/maurosoria/dirsearch.git
@@ -218,30 +131,6 @@ echo $PATH_EXPORT
 echo "export PATH=${PATH_EXPORT}" >> $HOME/.bash_profile && source $HOME/.bash_profile
 ln -sf $HOME/dirsearch/dirsearch.py $HOME/dirsearch/dirsearch && chmod +x $HOME/dirsearch/dirsearch
 echo "[+] Finished installing Dirsearch [+] "
-
-echo "[*] Installing aquatone [*]"
-wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip -O $HOME/aquatone.zip
-cd $HOME && unzip aquatone.zip -d $HOME/aquatone && cp $HOME/aquatone/aquatone /usr/local/bin
-rm -r $HOME/aquatone && rm $HOME/aquatone.zip
-cd $HOME
-echo "[+] Finished installing aquatone [+]"
-
-echo "[+] Installing LinkFinder [+] "
-git clone https://github.com/GerbenJavado/LinkFinder.git
-PATH_EXPORT=$PATH:$HOME/LinkFinder
-echo $PATH_EXPORT
-echo "export PATH=${PATH_EXPORT}" >> $HOME/.bash_profile && source $HOME/.bash_profile
-ln -sf $HOME/LinkFinder/linkfinder.py $HOME/LinkFinder/linkfinder && chmod +x $HOME/LinkFinder/linkfinder
-cd LinkFinder
-python setup.py install
-cd $HOME
-echo "[+] Finished installing LinkFinder [+]"
-
-echo "[+] Installing MassDNS [+]"
-git clone https://github.com/blechschmidt/massdns.git $HOME/massdns
-cd $HOME/massdns && make && cp $HOME/massdns/bin/massdns /usr/local/bin
-CD $HOME
-echo "[+] Finished installing MassDNS [+]"
 
 echo "[+] Installing and starting OWASP ZAP [+]"
 wget https://github.com/zaproxy/zaproxy/releases/download/w2020-01-27/ZAP_WEEKLY_D-2020-01-27.zip
