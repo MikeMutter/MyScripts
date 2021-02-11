@@ -5,7 +5,7 @@ logo(){
   echo "${red}
       ||\\  //||   //\\  \\    // ||''' ||\\  || 
       || \\// ||  //==\\  \\  //  ||==  || \\ ||
-      ||      || //    \\  \\//   ||,,, ||  \\||             
+      ||     || //    \\  \\//   ||,,, ||  \\||             
 ${reset}                                     "
 }
 ########################################################################
@@ -41,9 +41,8 @@ apt-get install -y python3-pip
 apt-get install -y python-pip
 apt-get install -y python-dnspython
 apt-get install -y rename
-apt-get install -y xargs
 apt-get install -y git
-apt-get -y rar
+
 ##Antivirus#################
 echo "[*] Install ClamAV [*]"
 apt-get install clamav -y 
@@ -59,7 +58,7 @@ apt-get -y install linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
 apt-get -y install firmware-linux-nonfree
 apt install firmware-linux-nonfree intel-microcode -y
 apt install firmware-linux firmware-linux-nonfree libdrm-amdgpu1 xserver-xorg-video-amdgpu -y
-apt-get -y install gdebi gksu firmware-linux
+apt-get -y install gdebi firmware-linux
 apt-get -y install broadcom-sta-dkms 
 apt-get -y install firmware-iwlwifi
 modprobe -r iwlwifi ; modprobe iwlwifi
@@ -67,7 +66,6 @@ modprobe -r iwlwifi ; modprobe iwlwifi
 echo "[++++] Install IP Vanish [++++]"
 cd Downloads/
 wget https://www.ipvanish.com/software/configs/configs.zip
-unzip configs.zip
 cd ..
 echo "[+++] go set up the VPN network manager and disable IPV6 [++++] "
 
@@ -92,15 +90,9 @@ apt install flameshot -y
 
 ##################Intall Go and set enviroment##############################################
 echo "[*] Install GoLang [*]"
-wget https://storage.googleapis.com/golang/go1.13.5.linux-amd64.tar.gz
-tar -xvg go1.13.5.linux-amd64.tar.gz
-mv go/ /usr/local
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-echo "export GOROOT=/usr/local/go" >> ~/.bash_profile 
-echo "export GOPATH=$HOME/go" >> ~/.bash_profile 
-echo "export PATH=$GOROOT/bin:$GOPATH/bin:$PATH" >> ~/.bash_profile && source ~/.bash_profile
+wget https://golang.org/dl/go1.15.8.linux-amd64.tar.gz
+tar -xzf go1.15.8.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
 ##############################################################################################
 echo "[*] Gedit [*]"
 apt-get -y install gedit
@@ -149,4 +141,4 @@ echo "[+++++++] "
 
 
     
-echo "[*]Finished Installing All Apps[*]"
+echo "[*]Finished Installing All Apps - review and fix any errors during download[*]"
