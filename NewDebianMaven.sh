@@ -88,12 +88,6 @@ apt install flameshot -y
 
 ###############Cut for Kali machine as well##############
 
-##################Intall Go and set enviroment##############################################
-echo "[*] Install GoLang [*]"
-wget https://golang.org/dl/go1.15.8.linux-amd64.tar.gz
-tar -xzf go1.15.8.linux-amd64.tar.gz
-export PATH=$PATH:/usr/local/go/bin
-##############################################################################################
 echo "[*] Gedit [*]"
 apt-get -y install gedit
 
@@ -104,7 +98,7 @@ echo "[*] tmux [*]"
 apt-get -y install tmux
 
 echo "[*] visualcode [*]"
-apt install software-properties-common apt-transport-https curl
+apt install -y software-properties-common apt-transport-https curl
 curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
 apt update
@@ -126,19 +120,6 @@ echo "[+] Installing and starting OWASP ZAP [+]"
 wget https://github.com/zaproxy/zaproxy/releases/download/w2020-01-27/ZAP_WEEKLY_D-2020-01-27.zip
 unzip ZAP_WEEKLY_D-2020-01-27.zip
 echo "[+] Finished installing OWASP ZAP [+]"
-
-echo "[++++] Install VMWare [++++]"
-mkdir VM
-cd VM/
-wget https://www.vmware.com/go/getplayer-linux
-echo "[+]Install back up kali VM [+]"
-cd Kali-Linux-2020.4-vmware-amd64.vmwarevm/
-wget https://github.com/MikeMutter/Backup_VM/raw/main/VM_BackUp_OSCP.zip
-unzip VM_BackUp_OSCP.zip
-cd VM_BackUp_OSCP
-cp Kali-Linux-2020* /home/maven/VM/Kali-Linux-2020.4-vmware-amd64.vmwarevm
-echo "[+++++++] "
-
 
     
 echo "[*]Finished Installing All Apps - review and fix any errors during download[*]"
